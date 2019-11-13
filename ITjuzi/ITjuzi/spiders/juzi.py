@@ -23,7 +23,7 @@ class JuziSpider(scrapy.Spider):
             "Referer": "https: // www.itjuzi.com / investevent",
         }
         url = "https://www.itjuzi.com/api/authorizations"
-        Payload = {"account": "18223991007", "password": "3459614817", "type": "pswd"}
+        Payload = {"account": "用户名", "password": "密码", "type": "pswd"}
         yield scrapy.Request(url=url,
                              method="POST",
                              body=json.dumps(Payload),
