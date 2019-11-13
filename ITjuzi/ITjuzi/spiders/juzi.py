@@ -75,7 +75,7 @@ class JuziSpider(scrapy.Spider):
             "Host": "www.itjuzi.com",
             "Referer": "https: // www.itjuzi.com / investevent",
         }
-        for i in range(1, 3):
+        for i in range(1, page):
             time.sleep(1)
             payload = {
                 "pagetotal": 0, "total": 0, "per_page": 20, "page": i, "type": 1, "scope": "", "sub_scope": "",
