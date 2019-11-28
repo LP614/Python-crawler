@@ -12,7 +12,7 @@ class ToutiaoSpiderSpider(scrapy.Spider):
     name = 'toutiao_spider'
     allowed_domains = ['www.toutiao.com']
     headers = {
-        # 'User-Agent': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; 360SE)',
+        'User-Agent': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; 360SE)',
         'Host': 'www.toutiao.com',
         'Accept': 'application/json, text/plain, */*',
         'Accept-Encoding': 'gzip, deflate, sdch',
