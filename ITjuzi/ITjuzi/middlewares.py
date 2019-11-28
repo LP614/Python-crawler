@@ -6,10 +6,27 @@
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 import logging
 import requests
+import random
 from scrapy import signals
 
 
-class ProxyMiddleware():
+# 随机切换USER_AGENTS
+class RandomUserAgent(object):
+    """Randomly rotate user agents based on a list of predefined ones"""
+
+    def __init__(self, agents):
+        self.agents = agents
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler.settings.getlist('USER_AGENTS'))
+
+    def process_request(self, request, spider):
+        request.headers.setdefault('User-Agent', random.choice(self.agents))
+
+
+# 增加IP代理池
+class ProxyMiddleware(object):
     def __init__(self, proxy_url):
         self.logger = logging.getLogger(__name__)
         self.proxy_url = proxy_url
