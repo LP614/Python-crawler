@@ -61,6 +61,8 @@ class ToutiaoSpiderSpider(scrapy.Spider):
         return zz
 
     def start_requests(self):
+        global start_time
+        start_time = datetime.now()
         ascp = self.get_as_cp()
         yield scrapy.FormRequest(url=self.start_url + self.max_behot_time + '&max_behot_time_tmp=' + self.max_behot_time + '&tadrequire=true&as=' + ascp[
                 'as'] + '&cp=' + ascp['cp'],
@@ -118,6 +120,9 @@ class ToutiaoSpiderSpider(scrapy.Spider):
     def closed(self, reason):
         # 爬虫关闭的时候，会调用这个方法
         email = EmailSend()
-        close_time = 'toutiao爬虫结束时间:{}'.format(datetime.now())
+        # 爬虫耗时
+        use_time = datetime.now() - start_time
+
+        close_time = 'toutiao爬虫开始时间{};结束时间:{};爬虫耗时:{}'.format(start_time, datetime.now(), use_time)
         content = '爬虫关闭原因:{}'.format(reason)
-        email.send_text_email('1292770412@qq.com', '1292770412@qq.com', close_time, content)
+        email.send_text_email('发送者邮箱@qq.com', '接受者邮箱@qq.com', close_time, content)

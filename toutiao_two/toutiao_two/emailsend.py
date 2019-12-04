@@ -21,7 +21,7 @@ class EmailSend(object):
         self.logging = logging.getLogger('Waring')
         self.email_host = 'smtp.qq.com'
         self.email_port = '465'
-        self.email_pass = 'krwsffxhrrdfibbj'
+        self.email_pass = '*********' # 自己的授权码
 
     def send_text_email(self, from_addr, to_addrs, subject, content):
         self.logging.warning('send_text_email is willed 丢弃')
